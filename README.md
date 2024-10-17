@@ -22,17 +22,17 @@ void insert(Node** poly, int coef, int exp) {
 
     Node* current = *poly;
     
-    // Insert while maintaining the order based on the exponent
+ 
     while (current->next != NULL && current->next->exp > exp) {
         current = current->next;
     }
     
     if (current->exp == exp) {
-        // If the exponent already exists, add the coefficients
+      
         current->coef += coef;
         free(temp);  // No need to keep the new node
     } else {
-        // Insert the new node in the right place
+      
         temp->next = current->next;
         current->next = temp;
     }
@@ -101,7 +101,7 @@ int main() {
     Node* poly2 = NULL;
     int n, coef, exp;
 
-    // Input for the first polynomial
+  
     printf("Enter the number of terms for the first polynomial: ");
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
@@ -110,7 +110,7 @@ int main() {
         insert(&poly1, coef, exp);
     }
 
-    // Input for the second polynomial
+   
     printf("Enter the number of terms for the second polynomial: ");
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
@@ -119,18 +119,18 @@ int main() {
         insert(&poly2, coef, exp);
     }
 
-    // Print the polynomials
+   
     printf("First polynomial: ");
     print(poly1);
     printf("Second polynomial: ");
     print(poly2);
 
-    // Add the polynomials
+  
     Node* result = add(poly1, poly2);
     printf("Result: ");
     print(result);
 
-    // Free allocated memory
+   
     free_poly(poly1);
     free_poly(poly2);
     free_poly(result);
